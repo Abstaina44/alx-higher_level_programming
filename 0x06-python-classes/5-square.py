@@ -1,34 +1,30 @@
 #!/usr/bin/python3
-"""Create a Class Square with size, method of area and getters & setters"""
+"""class Square that defines a square"""
 
 
-class Square:
-    """Class - Square"""
+class Square():
+    """square class with it's size and proper validation"""
 
     def __init__(self, size=0):
-        """Constructor of a Square with the size"""
-        if (type(size) is not int):
-            raise (TypeError("size must be an integer"))
-        elif (size < 0):
-            raise (ValueError("size must be >= 0"))
-        else:
-            self.__size = size
-
-    def area(self):
-        """Method to get the area of the Square"""
-        return (self.__size ** 2)
+        self.__size = size
 
     @property
     def size(self):
-        """Getter of the private attribute size"""
-        return (self.__size)
+        return self.__size
 
     @size.setter
     def size(self, value):
-        """Setter for the size private attribute"""
         if (type(value) is not int):
-            raise (TypeError("size must be an integer"))
+            raise TypeError("size must be an integer")
         elif (value < 0):
-            raise (ValueError("size must be >= 0"))
-        else:
-            self.__size = value
+            raise ValueError("size must be >= 0")
+        self.__size = value
+
+    def area(self):
+        return self.__size ** 2
+
+    def my_print(self):
+        if not self.__size:
+            print("")
+        for i in range(self.__size):
+            print("#" * self.__size)

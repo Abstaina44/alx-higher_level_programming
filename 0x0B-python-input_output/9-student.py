@@ -1,17 +1,16 @@
 #!/usr/bin/python3
 
-"""Class to JSON"""
+"""Write a class"""
 
 
-def class_to_json(obj):
-    """
-    a function that returns the dictionary description with
-    simple data structure
-    (list, dictionary, string, integer and boolean)
-    for JSON serialization of an object
-    args:
-        obj: is an instance of a Class
-        All attributes of the obj Class are serializable:
-    """
+class Student:
+    """Defines a class Student"""
+    def __init__(self, first_name, last_name, age):
+        """initializes the attributes of class Student"""
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-    return obj.__dict__
+    def to_json(self):
+        """retrieves a dictionary representation of a Student instance"""
+        return self.__dict__

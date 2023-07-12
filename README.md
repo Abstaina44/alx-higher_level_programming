@@ -1,7 +1,6 @@
 # alx-higher_level_programming
-The Zen of Python 😄
 
-The Zen of Python, by Tim Peters
+The Zen of Python 😄👨🏽‍💻, by Tim Peters
 
 Beautiful is better than ugly.
 

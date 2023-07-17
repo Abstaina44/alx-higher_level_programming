@@ -16,7 +16,7 @@ class Base:
                 id: Class id parameter
         """
 
-        if id != None:
+        if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
@@ -30,7 +30,7 @@ class Base:
                 JSON string fo parameter
         """
 
-        if (list_dictionaries == None or
+        if (list_dictionaries is None or
                 len(list_dictionaries) == 0):
             return "[]"
 

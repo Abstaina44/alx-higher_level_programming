@@ -1,76 +1,66 @@
 #!/usr/bin/python3
+"""
+unittest module for the base class
+"""
+import unittest
+from models.base import Base
 
-"""Base Class"""
 
-import json
-
-
-class Base:
-    """Base Class"""
-
-    __nb_objects = 0
-
-    def __init__(self, id=None):
-
-        if id != None:
-            self.id = id
-        else:
-            Base.__nb_objects += 1
-            self.id = Base.__nb_objects
-
-    def to_json_string(list_dictionaries):
-        """Returns JSON string of parameter
-            Args:
-                list_dictionaries: Input parameter
-            Returns:
-                JSON string fo parameter
+class TestBase(unittest.TestCase):
+    def setUp(self):
         """
+        set up the test case by resetting the __nb_objects counter to 0
+        return:
+            nothing
+        """
+        Base.__nb_objects = 0
 
-        if (list_dictionaries == None or
-                len(list_dictionaries) == 0):
-            return "[]"
+    def test_default_id_assignment(self):
+        """
+        test the default id assignment when no custom_id is provided
+        """
+        b1 = Base()
+        b2 = Base()
+        b3 = Base()
 
-        return json.dumps(list_dictionaries)
+        self.assertEqual(b1.id, 1)
+        self.assertEqual(b2.id, 2)
+        self.assertEqual(b3.id, 3)
 
-    @classmethod
-    def save_to_file(cls, list_objs):
-        """Writes the JSON string representation of list_objs to a file"""
-        filename = cls.__name__ + ".json"
-        json_list = [obj.to_dictionary() for obj in list_objs]
-        json_string = cls.to_json_string(json_list)
+    def test_custom_id_assignment(self):
+        """
+        test the id assignment when a custom_id is provided
+        """
+        b4 = Base(12)
+        b5 = Base(40)
+        b6 = Base(99)
 
-        with open(filename, "w") as file:
-            file.write(json_string)
+        self.assertEqual(b4.id, 12)
+        self.assertEqual(b5.id, 40)
+        self.assertEqual(b6.id, 99)
 
-    @staticmethod
-    def from_json_string(json_string):
-        """Returns the list represented by json_string"""
-        if json_string is None or len(json_string) == 0:
-            return []
+    def test_mixed_id_assignment(self):
+        """
+        Test the id assignment when a mixture of custom and default ids are used.
+        """
+        b7 = Base()
+        b8 = Base(50)
+        b9 = Base()
 
-        return json.loads(json_string)
+        self.assertEqual(b7.id, 5)
+        self.assertEqual(b8.id, 50)
+        self.assertEqual(b9.id, 6)
 
-    @classmethod
-    def create(cls, **dictionary):
-        """Returns an instance with all attributes already set"""
-        if cls.__name__ == "Rectangle":
-            dummy_instance = cls(1, 1)
-        elif cls.__name__ == "Square":
-            dummy_instance = cls(1)
-        else:
-            dummy_instance = cls()
+    def test_id_increment_after_custom_id(self):
+        """
+        Test that the id counter increments correctly even after a custom id is assigned.
+        """
+        b10 = Base(100)
+        b11 = Base()
 
-        dummy_instance.update(**dictionary)
-        return dummy_instance
+        self.assertEqual(b10.id, 100)
+        self.assertEqual(b11.id, 4)
 
-    @classmethod
-    def load_from_file(cls):
-        """Returns a list of instances from a JSON file"""
-        filename = cls.__name__ + ".json"
-        try:
-            with open(filename, "r") as file:
-                json_data = file.read()
-                obj_list = cls.from_json_string(json_data)
-                return [cls.create(**obj_dict) for obj_dict in obj_list]
-        except FileNotFoundError:
-            return []
+
+if __name__ == "__main__":
+    unittest.main()

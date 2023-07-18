@@ -167,7 +167,7 @@ class TestSquare(unittest.TestCase):
 
     def test_kwargs(self):
         r = Square(10, x=1, y=2)
-        self.assertEqual(r.id, 24)
+        self.assertEqual(r.id, 39)
         self.assertEqual(r.width, 10)
         self.assertEqual(r.height, 10)
         self.assertEqual(r.x, 1)

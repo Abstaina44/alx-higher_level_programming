@@ -5,7 +5,7 @@ const { argv } = require('process');
 function factorial (num) {
   if (num <= 1) return (1);
 
-  return (factorial(num -1) * num);
+  return (factorial(num - 1) * num);
 }
 
 const parsed = parseInt(argv[2]);

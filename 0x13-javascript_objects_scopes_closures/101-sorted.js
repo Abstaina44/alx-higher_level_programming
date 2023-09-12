@@ -1,6 +1,13 @@
 #!/usr/bin/node
 
-const { list } = require('./100-data');
+const dict = require('./101-data').dict;
+const newDict = {};
 
-console.log(list);
-console.log(list.map((element, idx) => element * idx));
+for (const key in dict) {
+  if (newDict[dict[key]] === undefined) {
+    newDict[dict[key]] = (key);
+  } else {
+    newDict[dict[key]].push(key);
+  }
+}
+console.log(newDict);

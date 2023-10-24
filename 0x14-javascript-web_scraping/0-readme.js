@@ -1,4 +1,4 @@
-#!/usr/bin/nodee
+#!/usr/bin/node
 const fs = require('fs');
 
 const [, , arg] = process.argv;

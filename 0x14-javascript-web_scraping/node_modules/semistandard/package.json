@@ -1,0 +1,94 @@
+{
+  "name": "semistandard",
+  "description": "All the goodness of `feross/standard` with semicolons sprinkled on top.",
+  "version": "17.0.0",
+  "author": {
+    "name": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "https://feross.org"
+  },
+  "bin": {
+    "semistandard": "./bin/cmd.js"
+  },
+  "bugs": {
+    "url": "https://github.com/standard/semistandard/issues"
+  },
+  "dependencies": {
+    "eslint": "^8.20.0",
+    "eslint-config-semistandard": "^17.0.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-config-standard-jsx": "^11.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.1",
+    "standard-engine": "^15.0.0"
+  },
+  "devDependencies": {
+    "installed-check": "^6.0.3",
+    "merge": "^2.1.1",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2",
+    "run-series": "^1.1.9",
+    "standard": "*",
+    "tape": "^5.3.1"
+  },
+  "engines": {
+    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+  },
+  "homepage": "https://github.com/standard/semistandard",
+  "keywords": [
+    "JavaScript Standard Style",
+    "bikeshed",
+    "check",
+    "checker",
+    "code",
+    "code checker",
+    "code linter",
+    "code standards",
+    "code style",
+    "enforce",
+    "eslint",
+    "hint",
+    "jscs",
+    "jshint",
+    "lint",
+    "policy",
+    "quality",
+    "semicolon",
+    "simple",
+    "standard",
+    "standard style",
+    "style",
+    "style checker",
+    "style linter",
+    "verify"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/standard/semistandard.git"
+  },
+  "scripts": {
+    "test": "standard && installed-check --engine-check --engine-no-dev && tape test/*.js"
+  },
+  "standard": {
+    "ignore": "tmp/**"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/feross"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/feross"
+    },
+    {
+      "type": "consulting",
+      "url": "https://feross.org/support"
+    }
+  ]
+}
